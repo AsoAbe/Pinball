@@ -586,7 +586,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834045384}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!1 &900642465
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,8 +698,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> c8453323746f4d41fe80c1f03250f4fe6a9d1cde
 --- !u!1 &1621365980
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +802,7 @@ GameObject:
   - component: {fileID: 2033139268}
   - component: {fileID: 2033139267}
   - component: {fileID: 2033139266}
+  - component: {fileID: 2033139270}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -819,7 +817,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033139265}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a9fc788b215a6644ab648542386919fc, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -905,6 +903,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2033139270
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033139265}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -913,7 +938,4 @@ SceneRoots:
   - {fileID: 752471125}
   - {fileID: 720911388}
   - {fileID: 2033139269}
-<<<<<<< HEAD
   - {fileID: 900642469}
-=======
->>>>>>> c8453323746f4d41fe80c1f03250f4fe6a9d1cde
