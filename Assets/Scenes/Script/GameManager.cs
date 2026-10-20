@@ -5,14 +5,8 @@ public class GameManager : MonoBehaviour
     // どこからでもアクセスできるインスタンス
     public static GameManager Instance;
 
-    // ゲーム開始時のスコア
-    public const int DEFAULT_SCORE = 0;
-
     // ゲーム開始時の残機数
     public const int DEFAULT_LIVES = 3;
-
-    // スコア
-    public int score = DEFAULT_SCORE    ;
 
     // 残機数
     public int remainingLives = DEFAULT_LIVES;
@@ -39,21 +33,13 @@ public class GameManager : MonoBehaviour
     // ゲーム開始時に状態を初期化する
     public void ResetGame()
     {
-        score = DEFAULT_SCORE;
+        // スコアも初期化する
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.ResetScore();
+        }
         remainingLives = DEFAULT_LIVES;
         isGameOver = false;
-    }
-
-    // スコアを加算する
-    public void AddScore(int value)
-    {
-        // ゲーム終了後はスコアを加算しない
-        if (isGameOver)
-        {
-            return;
-        }
-
-        score += value;
     }
 
     // 残機を減らす

@@ -9,7 +9,7 @@ public class SceneChanger : MonoBehaviour
     // シーン名のデフォルト設定
     public const string TITLE_SCENE = "TitleScene";
     public const string RESULT_SCENE = "ResultScene";
-    public const string GAME_OVER_SCENE = "GameOverScene";
+    public const string GAME_SCENE = "GameScene";
 
     // 通常のゲーム速度
     public const float NORMAL_TIME_SCALE = 1f;
@@ -52,21 +52,22 @@ public class SceneChanger : MonoBehaviour
         LoadScene(TITLE_SCENE);
     }
 
+    // ゲームシーンへ移動
+    public void GoToGameScene()
+    {
+        // ゲーム状態を初期化
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetGame();
+        }
+
+        LoadScene(GAME_SCENE);
+    }
+
     // リザルト画面へ移動
     public void GoToResultScene()
     {
         LoadScene(RESULT_SCENE);
     }
 
-    // ゲームクリア画面へ移動
-    public void GoToClearScene()
-    {
-        LoadScene(RESULT_SCENE);
-    }
-
-    // ゲームオーバー画面へ移動
-    public void GoToGameOverScene()
-    {
-        LoadScene(GAME_OVER_SCENE);
-    }
 }

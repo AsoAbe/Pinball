@@ -30,7 +30,7 @@ public class BallDestroyer : MonoBehaviour
         {
             if (SceneChanger.Instance != null)
             {
-                SceneChanger.Instance.GoToGameOverScene();
+                SceneChanger.Instance.GoToResultScene();
             }
 
             return;

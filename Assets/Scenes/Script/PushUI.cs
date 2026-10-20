@@ -16,12 +16,18 @@ public class PushUI : MonoBehaviour
         {
             return;
         }
+        
+        // ScoreManagerが存在しない場合は処理しない
+        if (ScoreManager.Instance == null)
+        {
+            return;
+        }
 
         // スコアを表示
         if (ScoreText != null)
         {
             ScoreText.text =
-                GameManager.Instance.score.ToString();
+                ScoreManager.Instance.Score.ToString();
         }
 
         // 残機を表示

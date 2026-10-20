@@ -15,15 +15,15 @@ public class ResultManager : MonoBehaviour
 
     private void Start()
     {
-        // GameManagerから最終スコアを取得
-        if (GameManager.Instance != null)
+        // ScoreManagerから最終スコアを取得
+        if (ScoreManager.Instance != null)
         {
-            result = GameManager.Instance.score;
+            result = ScoreManager.Instance.Score;
         }
         else
         {
             result = 0;
-            Debug.LogWarning("GameManagerが見つかりません。");
+            Debug.LogWarning("ScoreManagerが見つかりません。");
         }
 
         // スコア表示を開始
