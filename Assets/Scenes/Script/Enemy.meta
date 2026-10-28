@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: b02f7d8370014794f8982afaedd0fba1
+<<<<<<< HEAD
+guid: a6048372c1ce64d4cb8fec2366649b10
+=======
+guid: badace84a2f2d1a46b0e7fe0c40d1178
+>>>>>>> origin/hijiri
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
