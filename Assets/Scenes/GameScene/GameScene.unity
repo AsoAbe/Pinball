@@ -168,11 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlipperController
   pressKey: 97
-<<<<<<< HEAD
-  rotateAngle: -40
-=======
   rotateAngle: -60
->>>>>>> origin/hijiri
   rotateSpeed: 720
   rotationAxis: {x: 0, y: 1, z: 0}
 --- !u!65 &166039853
@@ -1347,11 +1343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlipperController
   pressKey: 100
-<<<<<<< HEAD
-  rotateAngle: 40
-=======
   rotateAngle: 60
->>>>>>> origin/hijiri
   rotateSpeed: 720
   rotationAxis: {x: 0, y: 1, z: 0}
 --- !u!65 &1401746513
