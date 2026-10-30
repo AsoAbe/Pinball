@@ -8,6 +8,14 @@ public class MiniEnemy : MonoBehaviour
     // Œ‚”jÏ‚İ‚©‚Ç‚¤‚©
     private bool isDefeated = false;
 
+    private EnemySpawner enemySpawner;
+
+    // Spawner‚ğ“o˜^‚·‚é
+    public void SetSpawner(EnemySpawner spawner)
+    {
+        enemySpawner = spawner;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         // ƒ{[ƒ‹ˆÈŠO‚Íˆ—‚µ‚È‚¢
@@ -23,6 +31,12 @@ public class MiniEnemy : MonoBehaviour
         }
 
         isDefeated = true;
+
+        // Spawner‚É“G‚ª“|‚³‚ê‚½‚±‚Æ‚ğ’Ê’m
+        if (enemySpawner != null)
+        {
+            enemySpawner.EnemyDefeated();
+        }
 
         // ƒXƒRƒA‚ğ‰ÁZ‚·‚é
         if (ScoreManager.Instance != null)
