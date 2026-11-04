@@ -15,6 +15,14 @@ public class MiniEnemy : MonoBehaviour
     {
         enemySpawner = spawner;
     }
+    private void Update()
+    {
+        // デバッグ用：Qキーで敵を倒す
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DefeatEnemy();
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,6 +32,12 @@ public class MiniEnemy : MonoBehaviour
             return;
         }
 
+        DefeatEnemy();
+    }
+
+    // 敵の死亡処理
+    private void DefeatEnemy()
+    {
         // 撃破済みなら処理しない
         if (isDefeated)
         {
