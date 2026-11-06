@@ -24,10 +24,10 @@ public class MiniEnemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         // ƒ{[ƒ‹ˆÈŠO‚Íˆ—‚µ‚È‚¢
-        if (!collision.gameObject.CompareTag("Ball"))
+        if (!other.CompareTag("Ball"))
         {
             return;
         }
