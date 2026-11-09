@@ -12,98 +12,61 @@ public class EnemySpawner : MonoBehaviour
     [Header("生成設定")]
     [SerializeField] private float coolTime = 5.0f;
 
-    // 現在存在している敵の数
-    private int aliveEnemyCount = 0;
-
-    // クールタイム中のコルーチン
-    private Coroutine spawnCoroutine;
-
     private void Start()
     {
         // 最初の敵を生成
-        SpawnEnemies();
+        for (int i = 0; i < enemyPrefabs.Length; i++)
+        {
+            int spawnIndex = i % spawnPoints.Length;
+            SpawnEnemy(i, spawnIndex);
+        }
     }
 
-    private void SpawnEnemies()
+    // 敵を1体生成
+    private void SpawnEnemy(int prefabIndex, int spawnIndex)
     {
-        if (enemyPrefabs == null || enemyPrefabs.Length == 0 ||
-            spawnPoints == null || spawnPoints.Length == 0)
+        if (enemyPrefabs[prefabIndex] == null ||
+            spawnPoints[spawnIndex] == null)
         {
             Debug.LogWarning("敵Prefabまたは生成位置が登録されていません。");
             return;
         }
 
-        // 登録された敵をすべて生成
-        for (int i = 0; i < enemyPrefabs.Length; i++)
+        GameObject enemy = Instantiate(
+            enemyPrefabs[prefabIndex],
+            spawnPoints[spawnIndex].position,
+            spawnPoints[spawnIndex].rotation
+        );
+
+        // 生成した敵にSpawnerと識別番号を登録
+        MiniEnemy miniEnemy = enemy.GetComponentInChildren<MiniEnemy>();
+
+        if (miniEnemy != null)
         {
-            if (enemyPrefabs[i] == null)
-            {
-                Debug.LogWarning("敵Prefabが登録されていません。");
-                continue;
-            }
-
-            int spawnIndex = i % spawnPoints.Length;
-
-            if (spawnPoints[spawnIndex] == null)
-            {
-                Debug.LogWarning("敵の生成位置が登録されていません。");
-                continue;
-            }
-
-            GameObject enemy = Instantiate(
-                enemyPrefabs[i],
-                spawnPoints[spawnIndex].position,
-                spawnPoints[spawnIndex].rotation
-            );
-
-            // 生成した敵にSpawnerを登録
-            MiniEnemy miniEnemy = enemy.GetComponentInChildren<MiniEnemy>();
-
-            if (miniEnemy != null)
-            {
-                miniEnemy.SetSpawner(this);
-                aliveEnemyCount++;
-            }
-            else
-            {
-                Debug.LogWarning("生成した敵にMiniEnemyがありません。");
-                Destroy(enemy);
-            }
+            miniEnemy.SetSpawner(this, prefabIndex, spawnIndex);
         }
-
-        Debug.Log("現在の敵数：" + aliveEnemyCount);
-    }
-
-    public void EnemyDefeated()
-    {
-        // 敵の残数を減らす
-        aliveEnemyCount--;
-
-        if (aliveEnemyCount < 0)
+        else
         {
-            aliveEnemyCount = 0;
-        }
-
-        Debug.Log("敵を撃破：残り " + aliveEnemyCount + "体");
-
-        // 敵が全滅し、クールタイムが開始されていない場合
-        if (aliveEnemyCount == 0 && spawnCoroutine == null)
-        {
-            spawnCoroutine = StartCoroutine(SpawnAfterCoolTime());
+            Debug.LogWarning("生成した敵にMiniEnemyがありません。");
+            Destroy(enemy);
         }
     }
 
-    private IEnumerator SpawnAfterCoolTime()
+    // 敵が倒されたときに呼び出す
+    public void EnemyDefeated(int prefabIndex, int spawnIndex)
     {
-        Debug.Log("敵が全滅！クールタイム開始");
+        StartCoroutine(RespawnEnemy(prefabIndex, spawnIndex));
+    }
 
-        // クールタイム
+    // 個別のクールタイム後に復活
+    private IEnumerator RespawnEnemy(int prefabIndex, int spawnIndex)
+    {
+        Debug.Log("敵の復活クールタイム開始");
+
         yield return new WaitForSeconds(coolTime);
 
-        // 再び敵を生成
-        SpawnEnemies();
+        SpawnEnemy(prefabIndex, spawnIndex);
 
-        // コルーチンの管理を終了
-        spawnCoroutine = null;
+        Debug.Log("敵が復活しました");
     }
 }

@@ -10,11 +10,18 @@ public class MiniEnemy : MonoBehaviour
 
     private EnemySpawner enemySpawner;
 
+    // 生成時のPrefabのインデックス
+    private int prefabIndex;
+    private int spawnIndex;
+
     // Spawnerを登録する
-    public void SetSpawner(EnemySpawner spawner)
+    public void SetSpawner(EnemySpawner spawner, int prefabIndex, int spawnIndex)
     {
         enemySpawner = spawner;
+        this.prefabIndex = prefabIndex;
+        this.spawnIndex = spawnIndex;
     }
+
     private void Update()
     {
         // デバッグ用：Qキーで敵を倒す
@@ -49,7 +56,7 @@ public class MiniEnemy : MonoBehaviour
         // Spawnerに敵が倒されたことを通知
         if (enemySpawner != null)
         {
-            enemySpawner.EnemyDefeated();
+            enemySpawner.EnemyDefeated(prefabIndex, spawnIndex);
         }
 
         // スコアを加算する
