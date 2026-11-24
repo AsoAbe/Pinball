@@ -34,10 +34,31 @@ public class GameTimer : MonoBehaviour
             IsRunning = false;
             hasFinished = true;
 
+            Debug.Log("時間切れ！");
+
             // 登録された処理に時間切れを通知
             OnTimeUp?.Invoke();
         }
     }
+
+
+    private void Start()
+    {
+        Debug.Log("GameTimer Start 実行");
+        ResultTransfer result = GetComponent<ResultTransfer>();
+
+        if (result != null)
+        {
+            OnTimeUp += result.OnResult;
+        }
+        else
+        {
+            Debug.LogError("Resultが見つかりません！");
+        }
+
+        StartTimer();
+    }
+
 
     // タイマーを初期化して開始
     public void StartTimer(float duration = DEFAULT_TIME)

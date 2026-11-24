@@ -81,12 +81,14 @@ public class ScoreManager : MonoBehaviour
         lastHitTime = Time.time;
 
         // 倍率を適用してスコアを加算
-        Score += value * Multiplier;
+        int GettingScore = value * Multiplier;
+        Score += GettingScore;
 
         Debug.Log(
             "Combo: " + Combo +
             " / 倍率: " + Multiplier + "倍" +
-            " / スコア: " + Score
+            " / ゲットスコア: " + GettingScore +
+            " / 現在スコア: " + Score
         );
     }
 
