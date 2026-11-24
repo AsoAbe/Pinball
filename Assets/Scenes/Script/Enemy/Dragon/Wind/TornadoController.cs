@@ -3,20 +3,34 @@ using UnityEngine;
 public class TornadoController : MonoBehaviour
 {
     [Header("—³Šª‚Ìİ’è")]
+    [SerializeField] private GameObject tornadoPrefab;
+    [SerializeField] private Transform spawnPoint;
     [SerializeField] private float windPower = 5.0f;
 
-    [SerializeField] private GameObject tornadoEffect;
+    private GameObject currentTornado;
 
     // —³Šª‚ğ”­¶‚³‚¹‚é
     public void StartTornado()
     {
-        tornadoEffect.SetActive(true);
+        if (currentTornado != null) return;
+
+        currentTornado = Instantiate(
+            tornadoPrefab,
+            spawnPoint.position,
+            spawnPoint.rotation
+        );
+
+        Debug.Log("StartTornado‚ªŒÄ‚Ño‚³‚ê‚Ü‚µ‚½");
+        gameObject.SetActive(true);
     }
 
     // —³Šª‚ğÁ‚·
     public void EndTornado()
     {
-        tornadoEffect.SetActive(false);
+        if (currentTornado == null) return;
+
+        Destroy(currentTornado);
+        currentTornado = null;
     }
 
     private void OnTriggerStay(Collider other)

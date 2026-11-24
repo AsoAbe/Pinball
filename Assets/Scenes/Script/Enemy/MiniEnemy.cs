@@ -59,10 +59,17 @@ public class MiniEnemy : MonoBehaviour
             enemySpawner.EnemyDefeated(prefabIndex, spawnIndex);
         }
 
-        // ƒXƒRƒA‚ğ‰ÁZ‚·‚é
-        if (ScoreManager.Instance != null)
+        // Ball‚ğæ“¾
+        GameObject ball = GameObject.FindGameObjectWithTag("Ball");
+
+        if (ball != null)
         {
-            ScoreManager.Instance.AddComboScore(scoreValue);
+            BallController player = ball.GetComponent<BallController>();
+
+            if (player != null)
+            {
+                player.AddScore(scoreValue);
+            }
         }
 
         // “G‚ğíœ‚·‚é
