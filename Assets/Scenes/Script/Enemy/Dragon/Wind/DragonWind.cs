@@ -2,30 +2,28 @@ using UnityEngine;
 
 public class DragonWind : MonoBehaviour
 {
-    [Header("—³Šª‚Ì§Œä")]
-    [SerializeField] private TornadoController tornadoController;
+    [Header("—³Šª‚Ìİ’è")]
+    [SerializeField] private GameObject tornadoPrefab;
+    [SerializeField] private Transform spawnPoint;
 
-    // Animation Event‚©‚çŒÄ‚Ño‚·
+    private GameObject currentTornado;
+
     public void StartWind()
     {
-        Debug.Log("StartWind‚ªŒÄ‚Ño‚³‚ê‚Ü‚µ‚½");
+        if (currentTornado != null) return;
 
-        if (tornadoController == null)
-        {
-            return;
-        }
-
-        tornadoController.StartTornado();
+        currentTornado = Instantiate(
+            tornadoPrefab,
+            spawnPoint.position,
+            spawnPoint.rotation
+        );
     }
 
-    // Animation Event‚©‚çŒÄ‚Ño‚·
     public void EndWind()
     {
-        if (tornadoController == null)
-        {
-            return;
-        }
+        if (currentTornado == null) return;
 
-        tornadoController.EndTornado();
+        Destroy(currentTornado);
+        currentTornado = null;
     }
 }

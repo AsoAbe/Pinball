@@ -1231,7 +1231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 425328}
   - component: {fileID: 9581600}
-  - component: {fileID: 1833900298937628773}
+  - component: {fileID: 8846081121365520405}
   m_Layer: 0
   m_Name: Green
   m_TagString: Untagged
@@ -1278,7 +1278,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1833900298937628773
+--- !u!114 &8846081121365520405
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1290,7 +1290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2934dfb5ab5ef9245ae2ae844e6ef979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragonWind
-  tornadoController: {fileID: 5477384555091897246, guid: fe0400c5aa57846eda1c0531a3aef210, type: 3}
+  tornadoPrefab: {fileID: 2291248758666515171, guid: fe0400c5aa57846eda1c0531a3aef210, type: 3}
+  spawnPoint: {fileID: 0}
 --- !u!1 &133102
 GameObject:
   m_ObjectHideFlags: 0

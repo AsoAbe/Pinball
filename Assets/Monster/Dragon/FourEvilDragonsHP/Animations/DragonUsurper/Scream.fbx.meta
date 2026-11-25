@@ -800,7 +800,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.49137932
+      - time: 0.31465518
         functionName: StartWind
         data: 
         objectReferenceParameter: {instanceID: 0}
